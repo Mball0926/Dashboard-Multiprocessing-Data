@@ -132,3 +132,10 @@ if __name__ == '__main__':
 		else:
 			pass
 	fout.close()
+#the following lines of code will the files used to generate final product since they are no longer needed.
+	for num in range(NUM):
+		if os.path.exists("Abundance"+str(num)+".csv"):
+			os.remove("Abundance"+str(num)+".csv")
+		else:
+			pass
+ 

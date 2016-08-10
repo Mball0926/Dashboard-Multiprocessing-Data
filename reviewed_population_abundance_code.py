@@ -1,3 +1,9 @@
+#THIS CODE IS USED TO GRAB DATA FROM THE IFCB DASHBOARD AS WELL AS GRAB A LOCAL MAT FILE THAT CONTAINS DATA ALL NEEDED
+#TO CALCULATE POPULATION ABUNDANCE FOR TIMES RANGEGING FROM 2006 UP TILL NOW
+
+#created by Matthew Ball on August 10, 2016
+
+
 import numpy as np
 import pandas as pd
 import random
@@ -16,7 +22,7 @@ from random import randint
 from time import sleep
 import os
 from scipy.io import loadmat
-
+#THIS PORTION OF THE CODE DECLARES GLOBAL DATA AND VARIABLES AND DATAFRAMES
 #Send out request and retry if request are unsuccessful 
 
 while True:
@@ -34,6 +40,7 @@ Py=pd.to_datetime(fd.date)
 fd=fd.drop('temperature',1)
 #Grab pid so that when loading the mat file, you can align data based on pid and merge the data
 fd['pid'] = fd['pid'].str.lstrip('http://ifcb-data.whoi.edu/mvco/')
+#this line calls for a mat file that was stored locally from the network attached storage that holds data on water volumes for each bin
 k=loadmat('ml_analyzed_all.mat',squeeze_me=True)
 D=list(k['filelist_all'])
 V=list(k['ml_analyzed'])
@@ -47,7 +54,7 @@ result['pid']='http://ifcb-data.whoi.edu/mvco/'+result['pid']+'_class_scores.csv
 NUM=len(result)
 
 
-
+#THIS PORTION OF THE CODE INOVLCES TWO FUNCTIONS CALLD: get_pid and do_counts WHICH WILL BE CALLED BY MAIN 
 
 #function grabs PID from dataframe
 def get_pid(result,arg):

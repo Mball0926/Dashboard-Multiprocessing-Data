@@ -2,6 +2,8 @@
 #TO CALCULATE POPULATION ABUNDANCE FOR TIMES RANGEGING FROM 2006 UP TILL NOW
 
 #created by Matthew Ball on August 10, 2016
+#required file: ml_analyzed_all.mat
+#output files: Population_Abundance.csv
 
 
 import numpy as np
